@@ -1,7 +1,7 @@
-package org.jetbrains.plugins.template.services
+package com.github.stevenlmcgraw.intellijcodegenerator2.services
 
 import com.intellij.openapi.project.Project
-import org.jetbrains.plugins.template.MyBundle
+import com.github.stevenlmcgraw.intellijcodegenerator2.MyBundle
 
 class MyProjectService(project: Project) {
 
