@@ -1,10 +1,10 @@
 package com.github.stevenlmcgraw.intellijcodegenerator2.services
 
-import com.github.stevenlmcgraw.intellijcodegenerator2.MyBundle
+import com.github.stevenlmcgraw.intellijcodegenerator2.CodeGenerator2Bundle
 
 class MyApplicationService {
 
     init {
-        println(MyBundle.message("applicationService"))
+        println(CodeGenerator2Bundle.message("applicationService"))
     }
 }

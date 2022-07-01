@@ -1,18 +1,39 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.stevenlmcgraw.intellijcodegenerator2</id>
-    <name>intellij-code-generator-2</name>
+    <name>CodeGenerator2</name>
     <vendor>stevenlmcgraw</vendor>
 
+    <idea-version since-build="211.*"/>
+
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.stevenlmcgraw.intellijcodegenerator2.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.stevenlmcgraw.intellijcodegenerator2.services.MyProjectService"/>
+<!--        <applicationService serviceImplementation="com.github.stevenlmcgraw.intellijcodegenerator2.services.MyApplicationService"/>-->
+<!--        <projectService serviceImplementation="com.github.stevenlmcgraw.intellijcodegenerator2.services.MyProjectService"/>-->
+        <applicationService
+                serviceImplementation="com.github.stevenlmcgraw.intellijcodegenerator2.config.CodeGeneratorSettings"/>
+
+        <applicationConfigurable instance="com.github.stevenlmcgraw.intellijcodegenerator2.ui.CodeGeneratorConfigurable"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.stevenlmcgraw.intellijcodegenerator2.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+<!--    <applicationListeners>-->
+<!--        <listener class="com.github.stevenlmcgraw.intellijcodegenerator2.listeners.MyProjectManagerListener"-->
+<!--                  topic="com.intellij.openapi.project.ProjectManagerListener"/>-->
+<!--    </applicationListeners>-->
+
+    <actions>
+        <group id="com.github.stevenlmcgraw.intellijcodegenerator2.action.CodeGeneratorGroup"
+               class="com.github.stevenlmcgraw.intellijcodegenerator2.action.CodeGeneratorGroup"
+               text="CodeGeneratorGroup">
+            <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="JavaGenerateGroup2"/>
+        </group>
+        <action id="CodeGenerator2.Menu.Action.CodeGeneratorAction"
+                class="com.github.stevenlmcgraw.intellijcodegenerator2.action.CodeGeneratorAction">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+
 </idea-plugin>
